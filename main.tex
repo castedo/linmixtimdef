@@ -1,8 +1,14 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{references.bib}
+
 \begin{document}
 
 
 \newcommand{\dom}[1]{\operatorname{dom}{ #1}}
-\newcommand{\stop}{\text{ .}}
+\newcommand{\mathstop}{\text{ .}}
 
 \newcommand{\Gam}{\mathrm{Gam}}
 \newcommand{\Loc}{\mathrm{Loc}}
@@ -20,10 +26,12 @@
 
 This document provides a formal mathematical definition of lineal
 admixture time. For an introduction and non-mathematical definition see
-\href{https://perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}{Lineal admixture time: an interdisciplinary definition}
-(\href{https://perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}{perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}).
+\href{https://perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}{Lineal admixture time: an interdisciplinary definition}:
+\\ (\href{https://perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}{perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}).
 \end{abstract}
 
+
+\section{Definition}
 
 We formally define lineal admixture time in terms of a
 \href{https://popgen.es/0iV47kWzQAuyONrIDG538k3x3Qc/0.3/}{gametic
@@ -31,14 +39,13 @@ lineage space}
 \cite{dsi:0i/0.3}
 \[
 (\Loc, (\Gam, \Mate, \Par, \Fert), \Lin)
-\stop
+\mathstop
 \]
 
 This formal definition of lineal admixture time also requires:
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
+% \def\labelenumi{\arabic{enumi}.}
 \item
   a reference observation time \(\tau\) (usually the present), and
 \item
@@ -58,12 +65,12 @@ lineal admixture time is the random variable \[
 \tau - \Mrlt(L, a)
 \] where \(L\) is a random lineage extant at time \(\tau\).
 
-\hypertarget{isolate-categorization}{%
-\subsection{Isolate Categorization}\label{isolate-categorization}}
+
+\subsection{Isolate Categorization}
 
 We assume a given gametic lineage space \[
 (\Loc, (\Gam, \Mate, \Par, \Fert), \Lin)
-\stop
+\mathstop
 \]
 
 An isolate categorization is an assignment \(a\) of a subset of zygotes
@@ -71,7 +78,6 @@ from \(\Mate\) to ancestral categories such that for all zygotes
 \(z \in \Mate\),
 
 \begin{itemize}
-\tightlist
 \item
   for all \(z \in \dom{a}, i \in \{0, 1\}, z_i \in \dom{Par}\),
   \(a(\Par(z_i)) = a(z)\), and
@@ -82,4 +88,5 @@ from \(\Mate\) to ancestral categories such that for all zygotes
 \end{itemize}
 
 
+\printbibliography
 \end{document}
