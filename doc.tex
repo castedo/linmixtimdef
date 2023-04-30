@@ -1,0 +1,98 @@
+\addbibresource{references.bib}
+
+\newcommand{\dom}[1]{\operatorname{dom}{ #1}}
+\newcommand{\mathstop}{\text{ .}}
+
+\newcommand{\Gam}{\mathrm{Gam}}
+\newcommand{\Loc}{\mathrm{Loc}}
+\newcommand{\Lin}{\mathrm{Lin}}
+\newcommand{\Mate}{\mathrm{Mate}}
+\newcommand{\Par}{\mathrm{Par}}
+\newcommand{\Fert}{\mathrm{Fert}}
+\newcommand{\Mrlt}{\mathrm{Mrlt}}
+
+
+\begin{abstract}
+\textbf{STAGE:} Early Draft
+
+\textbf{DOCUMENT TYPE:} Mathematical Definition
+
+This document provides a formal mathematical definition of lineal
+admixture time. For an introduction and non-mathematical definition see
+\href{https://perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}{Lineal admixture time: an interdisciplinary definition}:
+\\ (\href{https://perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}{perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}).
+\end{abstract}
+
+\section{Introduction}
+
+This document mathematically defines the general meaning of \emph{lineal admixture time}.
+A simple special case of \emph{lineal admixture time} is defined non-mathematically
+for a broad inter-disciplinary audience in
+\href{https://perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}{Lineal admixture time: an interdisciplinary definition}
+\cite{dsi:DZ/0}.
+Some of the benefits of the more general mathematical meaning are:
+\begin{enumerate}
+\item the option to condition on specific genetic regions (e.g. X chromosome), and
+\item compatibility with certain convenient mathematical models such as certain stationary
+processes.
+\end{enumerate}
+
+
+\section{Definition}
+
+We formally define lineal admixture time in terms of a
+\href{https://popgen.es/0iV47kWzQAuyONrIDG538k3x3Qc/0.3/}{gametic
+lineage space}
+\cite{dsi:0i/0.3}
+\[
+(\Loc, (\Gam, \Mate, \Par, \Fert), \Lin)
+\mathstop
+\]
+
+This formal definition of lineal admixture time also requires:
+
+\begin{enumerate}
+\item
+  a reference observation time \(\tau\) (usually the present), and
+\item
+  an isolate categorization \(c\) (e.g.~to ancestral groups).
+\end{enumerate}
+
+An isolate categorization \(c\) assigns a subset of non-admixed zygotes
+to one or more genetic isolates. A formal definition is given later.
+
+Given isolate categorization \(c\) of zygotes in \(\Mate\), and lineage
+\(d\), the \emph{Most Recent Lineal Transition} is
+$$
+\Mrlt(d,c) := \sup\{ \Fert(\Mate_*(g)) : g \in d, c(\Mate_*(g)) \not= c(\Par(g)) \}
+$$
+
+Given an isolate categorization \(a\) and observation time \(\tau\),
+lineal admixture time is the random variable
+$$
+\tau - \Mrlt(L, a)
+$$
+where $L$ is a random lineage extant at time $\tau$.
+
+
+\subsection{Isolate Categorization}
+
+We assume a given gametic lineage space
+$$
+(\Loc, (\Gam, \Mate, \Par, \Fert), \Lin)
+\mathstop
+$$
+
+An isolate categorization is an assignment $a$ of a subset of zygotes
+from $\Mate$ to ancestral categories such that for all zygotes
+$z \in \Mate$,
+
+\begin{itemize}
+\item
+  for all \(z \in \dom{a}, i \in \{0, 1\}, z_i \in \dom{Par}\),
+  \(a(\Par(z_i)) = a(z)\), and
+\item
+  if \(a(\Par(z_0)) = a(\Par(z_1))\) then \(z \in \dom{a}\) (assuming
+  \(z_0\) and \(z_1\) are child gametes and their parents are assigned
+  to an isolate).
+\end{itemize}
