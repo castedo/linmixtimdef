@@ -1,4 +1,9 @@
+% This file contains the document content that should be used to generate JATS XML, HTML and PDF formats
+
 \addbibresource{references.bib}
+
+\begin{document}
+
 
 \newcommand{\dom}[1]{\operatorname{dom}{ #1}}
 \newcommand{\mathstop}{\text{ .}}
@@ -96,3 +101,7 @@ $z \in \Mate$,
   \(z_0\) and \(z_1\) are child gametes and their parents are assigned
   to an isolate).
 \end{itemize}
+
+
+\printbibliography % used by LaTeX but not pandoc
+\end{document}
