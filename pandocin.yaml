@@ -1,3 +1,6 @@
+# This file is used by pandoc as a default settings option (e.g. "pandoc --defaults pandocin.yaml")
+# and provides all the data and references to post a public edition of this document.
+
 input-file: ${.}/doc.tex
 metadata:
   title: "Lineal admixture time: a mathematical definition"
