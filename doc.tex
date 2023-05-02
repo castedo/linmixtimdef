@@ -5,16 +5,20 @@
 \begin{document}
 
 
-\newcommand{\dom}[1]{\operatorname{dom}{ #1}}
+\newcommand{\dom}{\operatorname{dom}}
 \newcommand{\mathstop}{\text{ .}}
 
-\newcommand{\Gam}{\mathrm{Gam}}
+\newcommand{\Tim}{\mathrm{Tim}}
+\newcommand{\Hap}{\mathrm{Hap}}
+\newcommand{\Dip}{\mathrm{Dip}}
+\newcommand{\Par}{\mathrm{Par}}
+\newcommand{\Pat}{\mathrm{Pat}}
 \newcommand{\Loc}{\mathrm{Loc}}
 \newcommand{\Lin}{\mathrm{Lin}}
-\newcommand{\Mate}{\mathrm{Mate}}
-\newcommand{\Par}{\mathrm{Par}}
 \newcommand{\Fert}{\mathrm{Fert}}
 \newcommand{\Mrlt}{\mathrm{Mrlt}}
+\newcommand{\Lat}{\mathrm{Lat}}
+\newcommand{\Cat}{\mathrm{Cat}}
 
 
 \begin{abstract}
@@ -25,7 +29,8 @@
 This document provides a formal mathematical definition of lineal
 admixture time. For an introduction and non-mathematical definition see
 \href{https://perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}{Lineal admixture time: an interdisciplinary definition}:
-\\ (\href{https://perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}{perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}).
+
+\href{https://perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}{https://perm.pub/DZFCt68peNNajZ34WtZni9VYxzo/0}.
 \end{abstract}
 
 \section{Introduction}
@@ -38,69 +43,50 @@ for a broad inter-disciplinary audience in
 Some of the benefits of the more general mathematical meaning are:
 \begin{enumerate}
 \item the option to condition on specific genetic regions (e.g. X chromosome), and
-\item compatibility with certain convenient mathematical models such as certain stationary
-processes.
+\item compatibility with convenient mathematical models such as stationary processes.
 \end{enumerate}
 
 
 \section{Definition}
 
-We formally define lineal admixture time in terms of a
-\href{https://popgen.es/0iV47kWzQAuyONrIDG538k3x3Qc/0.3/}{gametic
-lineage space}
-\cite{dsi:0i/0.3}
-\[
-(\Loc, (\Gam, \Mate, \Par, \Fert), \Lin)
-\mathstop
-\]
-
-This formal definition of lineal admixture time also requires:
-
+We formally define lineal admixture time in terms of two givens:
 \begin{enumerate}
 \item
-  a reference observation time \(\tau\) (usually the present), and
+  a \emph{fertilization function} $\Fert$ \cite{dsi:0i/0.4}, and
 \item
-  an isolate categorization \(c\) (e.g.~to ancestral groups).
+  a \emph{diploid categorization function} $\Cat$.
 \end{enumerate}
 
-An isolate categorization \(c\) assigns a subset of non-admixed zygotes
-to one or more genetic isolates. A formal definition is given later.
+A \emph{haploid retrograde sequence} is a strictly decreasing sequence
+through $\Hap$ relative to $\Fert_H$, as defined in \cite{dsi:0i/0.4}.
 
-Given isolate categorization \(c\) of zygotes in \(\Mate\), and lineage
-\(d\), the \emph{Most Recent Lineal Transition} is
-$$
-\Mrlt(d,c) := \sup\{ \Fert(\Mate_*(g)) : g \in d, c(\Mate_*(g)) \not= c(\Par(g)) \}
-$$
+A diploid categorization function
+$\Cat: \Dip \mapsto \mathbb{Z}_{\ge 0}$
+assigns each diploid to either zero (indexing an admixed population)
+or a positive integer (indexing non-admixed populations).
 
-Given an isolate categorization \(a\) and observation time \(\tau\),
-lineal admixture time is the random variable
+Given diploid categorization $\Cat$,
+the \emph{Most Recent Lineal Transition} is the function
 $$
-\tau - \Mrlt(L, a)
+\Mrlt : D \mapsto \Re \cup \{ -\infty \}
 $$
-where $L$ is a random lineage extant at time $\tau$.
-
-
-\subsection{Isolate Categorization}
-
-We assume a given gametic lineage space
+where $D$ is the domain of all haploid retrograde sequences and
 $$
-(\Loc, (\Gam, \Mate, \Par, \Fert), \Lin)
+\Mrlt(S) := \sup \big\{
+    \Fert_H(S_i) : \exists i, \, \Cat(S_{i+1}) \not= \Cat(d), \, (d, s) = S_i 
+\big\}
 \mathstop
 $$
 
-An isolate categorization is an assignment $a$ of a subset of zygotes
-from $\Mate$ to ancestral categories such that for all zygotes
-$z \in \Mate$,
-
-\begin{itemize}
-\item
-  for all \(z \in \dom{a}, i \in \{0, 1\}, z_i \in \dom{Par}\),
-  \(a(\Par(z_i)) = a(z)\), and
-\item
-  if \(a(\Par(z_0)) = a(\Par(z_1))\) then \(z \in \dom{a}\) (assuming
-  \(z_0\) and \(z_1\) are child gametes and their parents are assigned
-  to an isolate).
-\end{itemize}
+Given an observation time $\tau$, lineal admixture time is the function 
+$$
+\Lat_{\tau}(S) := 0
+$$
+when all haploids in $S$ fertilize diploids of the same non-admixed category, otherwise
+$$
+\Lat_{\tau}(S) := \tau - \Mrlt(S)
+\mathstop
+$$
 
 
 \printbibliography % used by LaTeX but not pandoc
